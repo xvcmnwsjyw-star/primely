@@ -1,0 +1,13 @@
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// Wrap a route element: <ProtectedRoute roles={["instructor","admin"]}><Page/></ProtectedRoute>
+// If roles is omitted, any logged-in user is allowed through.
+export default function ProtectedRoute({ children, roles }) {
+  const user = useSelector((state) => state.auth.user);
+
+  if (!user) return <Navigate to="/login" replace />;
+  if (roles && !roles.includes(user.role)) return <Navigate to="/" replace />;
+
+  return children;
+}
