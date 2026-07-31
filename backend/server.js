@@ -17,6 +17,7 @@ import certificateRoutes from "./routes/certificateRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import instructorRoutes from "./routes/instructorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import devRoutes from "./routes/devRoutes.js";
 import { stripeWebhook } from "./controllers/paymentController.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
@@ -53,6 +54,7 @@ app.use("/api/certificates", certificateRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/instructor", instructorRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/dev", devRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
